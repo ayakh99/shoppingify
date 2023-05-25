@@ -49,7 +49,7 @@ const useListDrawer = create<ListDrawerStore>((set) => ({
   setEmpty: (isEmpty) => set({ isEmpty: isEmpty }),
   isMultipleActive: false,
   setIsMultipleActive: (isMultipleActive) => set({ isMultipleActive: isMultipleActive }),
-  isOpen: true,
+  isOpen: false,
   onOpen: () => set({ isOpen: true }),
   onClose: () => set({ isOpen: false }),
 }));
