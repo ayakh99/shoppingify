@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  name           String?
+  email          String?   @unique
+  emailVerified  DateTime?
+  image          String?
+  hashedPassword String?
+  completedTour  Boolean   @default(false)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  lists      List[]
+  categories Category[]
+  items      Item[]
+  listItems  ItemInLists[]
+  accounts   Account[]
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Category {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  title  String
+  items  Item[]
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model List {
+  id        String        @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String        @db.ObjectId
+  title     String
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  status    String        @default("active")
+  items     ItemInLists[]
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ItemInLists {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  listId String @db.ObjectId
+  itemId String @db.ObjectId
+  amount Int    @default(1)
+  status String @default("pending")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  list List @relation(fields: [listId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  item Item @relation(fields: [itemId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@unique([listId, itemId])
+}
+
+model Item {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String        @db.ObjectId
+  name        String
+  note        String?
+  image       String?
+  categoryId  String        @db.ObjectId
+  category    Category      @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  itemInLists ItemInLists[]
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
