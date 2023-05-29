@@ -12,6 +12,7 @@ import {
 
 import useListDrawer from '@/hooks/useListDrawer';
 import useItemDrawer from '@hooks/useItemDrawer';
+import useInfoDrawer from '@hooks/useInfoDrawer';
 
 import Tooltip from '../Tooltip';
 import UserMenu from './UserMenu';
@@ -23,16 +24,22 @@ interface NavRailProps {
 const NavRail: React.FC<NavRailProps> = ({ pendingListItems }) => {
   const { isOpen, onOpen, onClose } = useListDrawer();
   const { onClose: closeItemDrawer } = useItemDrawer();
+  const { isOpen: infoDrawerOpen, onClose: closeInfoDrawer } = useInfoDrawer();
   const router = useRouter();
   const path = usePathname();
 
   const onToggle = useCallback(() => {
     if (isOpen) {
       closeItemDrawer();
+
+      if (infoDrawerOpen) {
+        closeInfoDrawer();
+      }
+
       return onClose();
     }
     return onOpen();
-  }, [isOpen, onOpen, onClose, closeItemDrawer]);
+  }, [isOpen, onOpen, onClose, closeItemDrawer, infoDrawerOpen, closeInfoDrawer]);
 
   const navigate = useCallback(
     (href: string) => {
