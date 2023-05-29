@@ -47,9 +47,6 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onChange }) => {
               <Text span align="center" fw={600} fz={16} color="gray.7">
                 Click to select a file
               </Text>
-              <Text span align="center" fw={500} fz={14} color="gray.5">
-                Your file should not exceed 3mb
-              </Text>
             </Stack>
           </Stack>
         </Box>
@@ -59,20 +56,3 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onChange }) => {
 };
 
 export default ImageUpload;
-
-{
-  /* <Stack align="center" spacing={10}>
-  <Dropzone.Idle>
-    <PhotoLibraryRounded sx={{ fontSize: 64 }} />
-  </Dropzone.Idle>
-
-  <Stack spacing={0} align="center">
-    <Text align="center" fw={600} fz={16} color="gray.7">
-      Drag images here or click to select files
-    </Text>
-    <Text align="center" fw={500} fz={14} color="gray.5">
-      Your file should not exceed 3mb
-    </Text>
-  </Stack>
-</Stack>; */
-}
