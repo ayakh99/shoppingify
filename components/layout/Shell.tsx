@@ -53,6 +53,7 @@ const Shell: React.FC<AppShellProps & ShellProps> = ({
           styles={() => ({
             root: {
               border: 'none',
+              height: '100%',
             },
           })}
         >
