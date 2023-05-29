@@ -195,7 +195,7 @@ const ItemView = () => {
         </ItemEditProvider>
       </Box>
 
-      <Flex pt={{ base: 18, sm: 35 }} align="center" gap={10} style={{ alignSelf: 'center' }}>
+      <Flex pt={{ base: 18, sm: 35 }} align="center" gap={10} sx={{ alignSelf: 'center' }}>
         {isInfoMounted ? (
           <>
             <Button

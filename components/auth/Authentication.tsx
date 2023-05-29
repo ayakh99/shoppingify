@@ -27,7 +27,7 @@ export default Authentication;
 
 const useStyles = createStyles((theme) => ({
   grid: {
-    height: '100vh',
+    minHeight: '100vh',
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
     margin: 0,
@@ -41,6 +41,7 @@ const useStyles = createStyles((theme) => ({
     width: '100%',
     maxWidth: 512,
     padding: 20,
+    paddingBottom: 60,
     placeSelf: 'center',
     order: 1,
 

@@ -60,7 +60,7 @@ const NavRail: React.FC<NavRailProps> = ({ pendingListItems }) => {
   ];
 
   return (
-    <Stack justify="space-between" align="center" py={{ base: 26, md: 34 }} h="100%" spacing={50}>
+    <Stack justify="space-between" align="center" py={{ base: 64, md: 34 }} h="100%" spacing={50}>
       <UserMenu />
 
       <Flex direction="column" gap={45}>
