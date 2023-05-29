@@ -24,7 +24,7 @@ interface NavRailProps {
 const NavRail: React.FC<NavRailProps> = ({ pendingListItems }) => {
   const { isOpen, onOpen, onClose } = useListDrawer();
   const { onClose: closeItemDrawer } = useItemDrawer();
-  const { isOpen: infoDrawerOpen, onClose: closeInfoDrawer } = useInfoDrawer();
+  const { isOpen: isInfoDrawerOpen, onClose: closeInfoDrawer } = useInfoDrawer();
   const router = useRouter();
   const path = usePathname();
 
@@ -32,14 +32,15 @@ const NavRail: React.FC<NavRailProps> = ({ pendingListItems }) => {
     if (isOpen) {
       closeItemDrawer();
 
-      if (infoDrawerOpen) {
+      if (isInfoDrawerOpen) {
         closeInfoDrawer();
       }
 
       return onClose();
     }
+    closeInfoDrawer();
     return onOpen();
-  }, [isOpen, onOpen, onClose, closeItemDrawer, infoDrawerOpen, closeInfoDrawer]);
+  }, [isOpen, onOpen, onClose, closeItemDrawer, isInfoDrawerOpen, closeInfoDrawer]);
 
   const navigate = useCallback(
     (href: string) => {
