@@ -11,19 +11,17 @@ import drawerProps from '@common/drawer.props';
 
 const ListDrawer = () => {
   const { isOpen, onOpen, onClose } = useListDrawer();
-  // const matches = useMediaQuery('(min-width: 62em)');
-  // const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const matches = useMediaQuery('(min-width: 62em)');
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
 
-  // console.log(matches, isFirstLoad);
-
-  // useIsomorphicEffect(() => {
-  //   if (matches && isFirstLoad) {
-  //     onOpen();
-  //   }
-  //   if (matches !== undefined) {
-  //     setIsFirstLoad(false);
-  //   }
-  // });
+  useIsomorphicEffect(() => {
+    if (matches && isFirstLoad) {
+      onOpen();
+    }
+    if (matches !== undefined) {
+      setIsFirstLoad(false);
+    }
+  });
 
   return (
     <Drawer
