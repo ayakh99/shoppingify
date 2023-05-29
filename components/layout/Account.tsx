@@ -90,7 +90,7 @@ const Account: React.FC<AccountProps> = ({ user }) => {
                 src={user.image}
                 alt="User image"
                 radius="100%"
-                sx={{ cursor: isSubmitting ? 'wait' : 'pointer' }}
+                sx={{ cursor: isSubmitting ? 'wait' : 'pointer', flexShrink: 0 }}
               />
             </Menu.Target>
 
