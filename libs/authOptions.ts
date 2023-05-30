@@ -49,7 +49,6 @@ export const authOptions: AuthOptions = {
     signIn: '/signin',
     signOut: '/signin',
   },
-  // debug: process.env.NODE_ENV === 'development',
   session: {
     strategy: 'jwt',
   },

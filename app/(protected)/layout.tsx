@@ -1,9 +1,9 @@
+import { ListItems } from '@types';
 import getListItems from '@actions/getListItems';
 import getLists from '@actions/getLists';
-import { ListItems } from '@types';
+import getPendingItems from '@actions/getPendingItems';
 
 import Shell from '@components/layout/Shell';
-import getPendingItems from '@actions/getPendingItems';
 
 const InternalLayout = async ({ children }: { children: React.ReactNode }) => {
   const userLists = await getLists();

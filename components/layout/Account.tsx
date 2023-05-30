@@ -15,17 +15,17 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 import { modals } from '@mantine/modals';
+import { notifications } from '@mantine/notifications';
 import { ArrowRightAlt, CloseRounded, EditRounded, FileUploadRounded } from '@mui/icons-material';
 
 import { SafeUser } from '@types';
 import { uploadModalProps } from '@common/modals.props';
+import notificationsContent from '@content/notifications';
 
 import Tooltip from '@components/Tooltip';
 import UserEdit from '@components/account/UserEdit';
 import UserInfo from '@components/account/UserInfo';
 import ImageUpload from '@components/ImageUpload';
-import { notifications } from '@mantine/notifications';
-import notificationsContent from '@content/notifications';
 
 interface AccountProps {
   user: SafeUser;

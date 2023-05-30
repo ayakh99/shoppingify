@@ -1,6 +1,6 @@
-import { MantineTheme } from '@mantine/core';
+import { ModalProps } from '@mantine/core';
 
-const props = {
+const props: Omit<ModalProps, 'title' | 'opened' | 'onClose'> = {
   keepMounted: false,
   closeOnClickOutside: false,
   centered: true,
@@ -8,7 +8,7 @@ const props = {
     opacity: 0.1,
     zIndex: 202,
   },
-  styles: (theme: MantineTheme) => ({
+  styles: () => ({
     content: {
       padding: '14px 20px',
       borderRadius: 24,

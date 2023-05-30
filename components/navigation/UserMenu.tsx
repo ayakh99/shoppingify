@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { Menu, useMantineTheme } from '@mantine/core';
-import { AccountCircleRounded, HelpRounded, LogoutRounded } from '@mui/icons-material';
+import { AccountCircleRounded, LogoutRounded } from '@mui/icons-material';
 
 import Tooltip from '../Tooltip';
 
@@ -45,17 +45,6 @@ const UserMenu = () => {
           onClick={() => signOut({ callbackUrl: `${window.location.origin}/signin` })}
         >
           Sign out
-        </Menu.Item>
-
-        <Menu.Divider />
-
-        <Menu.Item
-          sx={{ borderRadius: 12 }}
-          fw={600}
-          icon={<HelpRounded htmlColor={theme.colors.orange[4]} sx={{ fontSize: '18px' }} />}
-          onClick={() => {}}
-        >
-          Help
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

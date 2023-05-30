@@ -8,12 +8,13 @@ import { Button, Divider, Stack, Text, TextInput, Title } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { useForm, yupResolver } from '@mantine/form';
 import * as Yup from 'yup';
+import { modals } from '@mantine/modals';
 
 import { SafeUser } from '@types';
 import inputProps from '@common/input.props';
-import notificationsContent from '@content/notifications';
-import { modals } from '@mantine/modals';
 import { userDeleteModalProps } from '@common/modals.props';
+import notificationsContent from '@content/notifications';
+
 import UserDelete from './UserDelete';
 
 interface UserEditProps {
@@ -47,6 +48,10 @@ const UserEdit: React.FC<UserEditProps> = ({ user, setMounted }) => {
     getInputProps: getGeneralInputprops,
     onSubmit: onSubmitGeneral,
   } = useForm<GeneralValues>({
+    initialValues: {
+      name: '',
+      email: '',
+    },
     validate: yupResolver(generalSchema),
     transformValues: (values) => ({
       name: values.name.trim(),
@@ -55,7 +60,6 @@ const UserEdit: React.FC<UserEditProps> = ({ user, setMounted }) => {
   });
 
   const {
-    setValues: setPasswordValues,
     getInputProps: getPasswordInputprops,
     onSubmit: onSubmitPassword,
     setErrors,
