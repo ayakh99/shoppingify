@@ -22,6 +22,7 @@ export default async function getHistory() {
             lists: { $push: '$$ROOT' },
           },
         },
+        { $sort: { _id: -1 } },
         { $project: { _id: 0 } },
       ],
     });
